@@ -97,6 +97,7 @@
     html[lang="ar"] h2{letter-spacing:0;font-size:14px}
     section p{margin:0 0 10px;font-size:15.5px;color:var(--body)}
     section p:last-child{margin-bottom:0}
+    section.about p{text-align:justify;text-justify:inter-word;-webkit-hyphens:auto;hyphens:auto}
     section p.note{font-size:14px;color:var(--muted)}
     .chips{display:flex;flex-wrap:wrap;gap:8px}
     .chip{padding:8px 12px;border-radius:999px;font-size:13.5px;font-weight:600;background:var(--chip);border:1px solid var(--line)}
@@ -211,9 +212,9 @@
 
       <p class="hook" data-i18n="hook">Supporting Civil, Government, VIP &amp; Defence Aviation</p>
 
-      <section>
+      <section class="about">
         <h2 data-i18n="h_about">About</h2>
-        <p data-i18n="about1">I lead Leonardo Helicopters' operations services across the Middle East: multimillion-euro programmes, international teams and relationships with ministries, armed forces and corporate operators, with a particular focus on VIP, Head of State and government aviation.</p>
+        <p data-i18n="about1">I lead Leonardo Helicopters' operations services across the Middle East: multimillion-euro programmes and international teams, with a particular focus on VIP, Head of State and government aviation.</p>
         <p class="note" data-i18n="about2">Behind this, over 40 years in aviation: officer pilot and squadron commander, Type Rating Instructor and Examiner (TRI/TRE) with 7,000+ flight hours. An operational foundation that brings realism to strategic decisions.</p>
       </section>
 
@@ -296,7 +297,7 @@
       it:{hook:"A supporto dell'aviazione civile, governativa, VIP e della difesa",role:"Head of Middle East Operations Services",org:"Leonardo Helicopters · Doha, Qatar",
         save:"Salva contatto",call:"Chiama",qr:"Mostra QR",share:"Condividi",
         h_about:"Chi sono",
-        about1:"Guido i servizi operativi di Leonardo Helicopters in Medio Oriente: programmi multimilionari, team internazionali e relazioni con ministeri, forze armate e operatori corporate, con particolare attenzione all'aviazione VIP, Head of State e governativa.",
+        about1:"Guido i servizi operativi di Leonardo Helicopters in Medio Oriente: programmi multimilionari e team internazionali, con particolare attenzione all'aviazione VIP, Head of State e governativa.",
         about2:"Alle spalle, oltre 40 anni nell'aviazione: ufficiale pilota e comandante di squadrone, istruttore ed esaminatore (TRI/TRE) con oltre 7.000 ore di volo. Una base operativa che rende concrete le decisioni strategiche.",
         h_focus:"Aree di competenza",f1:"Gestione operations e servizi",f2:"Programmi governativi e difesa",f3:"Aviazione VIP e Head of State",f4:"Strategia di training",f5:"Entrata in servizio delle flotte",f6:"Relazioni istituzionali",
         h_career:"Percorso",y1:"2021 – oggi",d1:"Leonardo Helicopters, Doha · Qatar, Arabia Saudita, EAU, Oman",d2:"Leonardo Helicopters · team di oltre 70 professionisti",y3:"2007 – oggi",t3:"Type Rating Instructor & Examiner",t4:"Ufficiale pilota, Aviazione dell'Esercito",d4:"Comandante di squadrone elicotteri AB412 Operazioni Speciali",d5:"Master of International Business Administration · Università Guglielmo Marconi",
@@ -306,7 +307,7 @@
       en:{hook:"Supporting Civil, Government, VIP & Defence Aviation",role:"Head of Middle East Operations Services",org:"Leonardo Helicopters · Doha, Qatar",
         save:"Save contact",call:"Call",qr:"Show QR",share:"Share",
         h_about:"About",
-        about1:"I lead Leonardo Helicopters' operations services across the Middle East: multimillion-euro programmes, international teams and relationships with ministries, armed forces and corporate operators, with a particular focus on VIP, Head of State and government aviation.",
+        about1:"I lead Leonardo Helicopters' operations services across the Middle East: multimillion-euro programmes and international teams, with a particular focus on VIP, Head of State and government aviation.",
         about2:"Behind this, over 40 years in aviation: officer pilot and squadron commander, Type Rating Instructor and Examiner (TRI/TRE) with 7,000+ flight hours. An operational foundation that brings realism to strategic decisions.",
         h_focus:"Focus areas",f1:"Operations & service management",f2:"Government & defence programmes",f3:"VIP & Head of State aviation",f4:"Training strategy",f5:"Fleet entry into service",f6:"Institutional relations",
         h_career:"Career",y1:"2021 – present",d1:"Leonardo Helicopters, Doha · Qatar, Saudi Arabia, UAE, Oman",d2:"Leonardo Helicopters · team of 70+ professionals",y3:"2007 – present",t3:"Type Rating Instructor & Examiner",t4:"Officer Pilot, Italian Army Aviation",d4:"Commanding Officer, AB412 Special Operations Helicopter Squadron",d5:"Master of International Business Administration · Guglielmo Marconi University",
@@ -316,7 +317,7 @@
       ar:{hook:"دعم الطيران المدني والحكومي وطيران كبار الشخصيات والطيران الدفاعي",role:"رئيس خدمات العمليات في الشرق الأوسط",org:"ليوناردو هليكوبترز · الدوحة، قطر",
         save:"حفظ جهة الاتصال",call:"اتصال",qr:"عرض رمز QR",share:"مشاركة",
         h_about:"نبذة",
-        about1:"أقود خدمات العمليات لدى ليوناردو هليكوبترز في الشرق الأوسط: برامج بملايين اليوروهات، وفرق دولية، وعلاقات مع الوزارات والقوات المسلحة ومشغلي الشركات، مع تركيز خاص على طيران كبار الشخصيات ورؤساء الدول والطيران الحكومي.",
+        about1:"أقود خدمات العمليات لدى ليوناردو هليكوبترز في الشرق الأوسط: برامج بملايين اليوروهات وفرق دولية، مع تركيز خاص على طيران كبار الشخصيات ورؤساء الدول والطيران الحكومي.",
         about2:"ورائي أكثر من 40 عامًا في الطيران: ضابط طيار وقائد سرب، ومدرب وممتحن أهلية الطراز (TRI/TRE) بأكثر من 7,000 ساعة طيران. أساس تشغيلي يضفي واقعية على القرارات الاستراتيجية.",
         h_focus:"مجالات التركيز",f1:"إدارة العمليات والخدمات",f2:"البرامج الحكومية والدفاعية",f3:"طيران كبار الشخصيات ورؤساء الدول",f4:"استراتيجية التدريب",f5:"إدخال الأساطيل إلى الخدمة",f6:"العلاقات المؤسسية",
         h_career:"المسيرة المهنية",y1:"2021 – حتى الآن",d1:"ليوناردو هليكوبترز، الدوحة · قطر، السعودية، الإمارات، عُمان",d2:"ليوناردو هليكوبترز · فريق من أكثر من 70 متخصصًا",y3:"2007 – حتى الآن",t3:"مدرب وممتحن أهلية الطراز",t4:"ضابط طيار، طيران الجيش الإيطالي",d4:"قائد سرب مروحيات AB412 للعمليات الخاصة",d5:"ماجستير إدارة الأعمال الدولية · جامعة غوليلمو ماركوني",
