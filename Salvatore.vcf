@@ -1,19 +1,22 @@
 BEGIN:VCARD
 VERSION:3.0
-PRODID:-//Apple Inc.//macOS 15.6.1//EN
-N:CAPORALE;Salvatore;;;
-FN:Salvatore CAPORALE
+N:Caporale;Salvatore;;;
+FN:Salvatore Caporale
 ORG:Leonardo Helicopters;
 TITLE:Head of Middle East Operations Services
-EMAIL;type=INTERNET;type=HOME;type=pref:s.caporale@yahoo.it
-EMAIL;type=INTERNET;type=WORK:salvatore.caporale@leonardo.com
-TEL;type=WORK;type=VOICE;type=pref:+39 3454770625
-TEL;type=CELL;type=VOICE:+97450553691
-ADR;type=WORK;type=pref:;; Al-Fardan Office Tower, 15° floor 61 Funduq Street, Westbay;DOHA;;00000;QATAR
-X-SOCIALPROFILE;type=gamecenter;x-user=1044652270:http://link.gc.apple.com/players/G:1044652270:x-apple:1044652270%3Ahttp%3A//link.gc.apple.com/players/G:1044652270
-NOTE:https://caporale.pro/\n\nhttps://helicopters.leonardo.com/en/customer-support-services-training/\n\nhttps://www.linkedin.com/in/salvatore-caporale/\n\nhttps://www.linkedin.com/feed/update/urn:li:activity:7375816873982156800/
-item1.URL;type=pref:https://caporale.pro
-item1.X-ABLabel:_$!<HomePage>!$_
+item1.TEL;type=CELL;type=VOICE;type=pref:+974 5055 3691
+item1.X-ABLabel:Qatar
+item2.TEL;type=CELL;type=VOICE:+39 345 477 0625
+item2.X-ABLabel:Italia
+EMAIL;type=INTERNET;type=WORK;type=pref:salvatore.caporale@leonardo.com
+EMAIL;type=INTERNET;type=HOME:salvatore@caporale.pro
+ADR;type=WORK;type=pref:;;Al-Fardan Office Tower\, 15th floor\, 61 Funduq Street\, West Bay;Doha;;;Qatar
+item3.URL;type=pref:https://caporale.pro
+item3.X-ABLabel:Digital card
+item4.URL:https://www.linkedin.com/in/salvatore-caporale/
+item4.X-ABLabel:LinkedIn
+X-SOCIALPROFILE;type=linkedin:https://www.linkedin.com/in/salvatore-caporale/
+NOTE:Leonardo Helicopters\, Doha. Operations\, programmes and government\, defence and VIP aviation across the Middle East.
 PHOTO;ENCODING=b;TYPE=JPEG:/9j/4AAQSkZJRgABAQAAkACQAAD/4QB0RXhpZgAATU0AKgAA
  AAgABAEaAAUAAAABAAAAPgEbAAUAAAABAAAARgEoAAMAAAABAAIAAIdpAAQAAAABAAAATgAAAA
  AAAACQAAAAAQAAAJAAAAABAAKgAgAEAAAAAQAAAjSgAwAEAAAAAQAAAjIAAAAA/+0AOFBob3Rv
@@ -911,7 +914,3 @@ PHOTO;ENCODING=b;TYPE=JPEG:/9j/4AAQSkZJRgABAQAAkACQAAD/4QB0RXhpZgAATU0AKgAA
  e592r6Fvvu188fBj/kH2/+7/V6+iL/AO7Xk1tzrWxzi/6w1Rm46VfX/WGqE9c1QplEsR0Jo3N6
  n86Q9qSszM//2Q==
 END:VCARD
-
-
-
-
