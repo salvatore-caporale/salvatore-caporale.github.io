@@ -109,6 +109,7 @@
     .tl li::after{content:"";position:absolute;inset-inline-start:4px;top:20px;bottom:2px;width:1px;background:var(--line)}
     .tl li:last-child::after{display:none}
     .tl .yr{font-size:12.5px;font-weight:700;color:var(--soft);direction:ltr;unicode-bidi:isolate}
+    html[dir="rtl"] .tl .yr{text-align:right}
     .tl .ti{font-size:15px;font-weight:700;line-height:1.35}
     .tl .de{font-size:13.5px;color:var(--muted);line-height:1.4}
     .tl li.edu::before{background:transparent;border:2px solid var(--dot);width:5px;height:5px}
@@ -152,7 +153,39 @@
 
     .toast{position:fixed;left:50%;bottom:calc(90px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:40;background:#121619;color:#fff;padding:10px 16px;border-radius:999px;font-weight:700;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s;box-shadow:0 6px 20px rgba(0,0,0,.2)}
     .toast.on{opacity:1}
-    @media (min-width:760px){.page{padding-top:40px}}
+
+    /* Choice sheet (call / WhatsApp / email) */
+    .sheet{position:fixed;inset:0;z-index:35;display:none;align-items:flex-end;justify-content:center;background:rgba(18,22,25,.45)}
+    .sheet.on{display:flex}
+    .sheet .panel{width:100%;max-width:480px;background:#fff;border-radius:20px 20px 0 0;padding:18px 18px calc(16px + env(safe-area-inset-bottom));box-shadow:0 -10px 30px rgba(0,0,0,.15)}
+    .sheet .st{margin:0 0 10px;text-align:center;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+    html[lang="ar"] .sheet .st{letter-spacing:0;font-size:14px}
+    .sheet .opt{display:flex;align-items:center;gap:12px;padding:14px;margin-top:8px;border:1px solid var(--tileline);border-radius:14px;text-decoration:none;color:var(--text)}
+    .sheet .opt .ic{flex:0 0 40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--icbg);color:var(--ic)}
+    .sheet .opt .ic svg{width:20px;height:20px}
+    .sheet .opt small{display:block;font-size:12px;font-weight:600;color:var(--soft)}
+    .sheet .opt b{display:block;font-size:16px;direction:ltr;unicode-bidi:isolate}
+    html[dir="rtl"] .sheet .opt b{text-align:right}
+    .sheet .cancel{all:unset;cursor:pointer;display:block;width:100%;box-sizing:border-box;text-align:center;margin-top:12px;padding:14px;border-radius:14px;background:var(--chip);font:700 15px/1 var(--font);color:var(--text)}
+
+    /* Desktop: two columns */
+    .deskqr{display:none}
+    @media (min-width:900px){
+      .page{max-width:1100px;padding:32px 32px 48px}
+      main{display:grid;grid-template-columns:400px minmax(0,1fr);gap:32px;align-items:start;margin-top:12px}
+      .profile{position:sticky;top:24px;background:var(--card);border:1px solid var(--cardline);border-radius:22px;box-shadow:0 10px 30px rgba(18,22,25,.06);padding:26px 24px 24px}
+      .hero{padding-top:4px}
+      .content > section:first-child{margin-top:0}
+      section{padding:24px 26px}
+      section p{font-size:16px}
+      .deskqr{display:flex;align-items:center;gap:14px;margin-top:18px;padding-top:18px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted);line-height:1.4}
+      .deskqr img{width:96px;height:96px;flex:0 0 96px}
+      .bar{display:none}
+      .tile:hover,.ghost:hover,.list a:hover,.sheet .opt:hover{border-color:var(--ic)}
+      .primary:hover{filter:brightness(1.08)}
+      footer{text-align:start}
+      footer .leo{margin:0 0 10px}
+    }
     @media (prefers-reduced-motion:reduce){*{transition:none!important}}
   </style>
 </head>
@@ -168,6 +201,7 @@
     </header>
 
     <main>
+      <div class="profile">
       <div class="hero">
         <img class="avatar" src="/foto.jpg" alt="Salvatore Caporale" width="120" height="120">
         <h1>Salvatore Caporale</h1>
@@ -181,15 +215,15 @@
       </a>
 
       <div class="quick">
-        <a class="tile" href="tel:+97450553691">
+        <a class="tile" href="tel:+97450553691" data-sheet="call">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
           <span data-i18n="call">Call</span>
         </a>
-        <a class="tile wa-link" href="https://wa.me/97450553691" target="_blank" rel="noopener">
+        <a class="tile" href="https://wa.me/97450553691" target="_blank" rel="noopener" data-sheet="wa">
           <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg></span>
           <span>WhatsApp</span>
         </a>
-        <a class="tile" href="mailto:salvatore.caporale@leonardo.com">
+        <a class="tile" href="mailto:salvatore.caporale@leonardo.com" data-sheet="mail">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></span>
           <span>Email</span>
         </a>
@@ -212,6 +246,10 @@
 
       <p class="hook" data-i18n="hook">Supporting Civil, Government, VIP &amp; Defence Aviation</p>
 
+      <div class="deskqr"><img src="/qr.svg" alt="QR code caporale.pro" width="120" height="120"><span data-i18n="qr_hint">Scan with your camera to get my card</span></div>
+      </div>
+
+      <div class="content">
       <section class="about">
         <h2 data-i18n="h_about">About</h2>
         <p data-i18n="about1">I lead Leonardo Helicopters' operations services across the Middle East: sensitive government programmes, multimillion-euro budgets and international teams, with a particular focus on VIP and Head of State aviation.</p>
@@ -261,6 +299,7 @@
       </section>
 
       <footer><img class="leo" src="/logo.png" alt="Leonardo" width="91" height="16">© 2026 Salvatore Caporale · caporale.pro</footer>
+      </div>
     </main>
   </div>
 
@@ -271,7 +310,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
         <span data-i18n="save">Save contact</span>
       </a>
-      <a class="wa wa-link" href="https://wa.me/97450553691" target="_blank" rel="noopener" aria-label="WhatsApp" tabindex="-1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg></a>
+      <a class="wa" href="https://wa.me/97450553691" target="_blank" rel="noopener" data-sheet="wa" aria-label="WhatsApp" tabindex="-1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg></a>
     </div>
   </div>
 
@@ -289,12 +328,20 @@
     </div>
   </div>
 
+  <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-t">
+    <div class="panel">
+      <p class="st" id="sheet-t"></p>
+      <div id="sheet-opts"></div>
+      <button type="button" class="cancel" id="sheet-x" data-i18n="cancel">Cancel</button>
+    </div>
+  </div>
+
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
   (function(){
     var T={
-      it:{hook:"A supporto dell'aviazione civile, governativa, VIP e della difesa",role:"Head of Middle East Operations Services",org:"Leonardo Helicopters · Doha, Qatar",
+      it:{cancel:"Annulla",wa_q:"WhatsApp Qatar",wa_i:"WhatsApp Italia",hook:"A supporto dell'aviazione civile, governativa, VIP e della difesa",role:"Head of Middle East Operations Services",org:"Leonardo Helicopters · Doha, Qatar",
         save:"Salva contatto",call:"Chiama",qr:"Mostra QR",share:"Condividi",
         h_about:"Chi sono",
         about1:"Guido i servizi operativi di Leonardo Helicopters in Medio Oriente: programmi governativi sensibili, budget multimilionari e team internazionali, con particolare attenzione all'aviazione VIP e Head of State.",
@@ -304,7 +351,7 @@
         h_contacts:"Contatti",c1:"Cellulare Qatar",c2:"Cellulare Italia",c3:"Email di lavoro",c4:"Email personale",
         h_links:"Link",l1:"Profilo completo",l2:"Supporto clienti, servizi e training",l3a:"Tesi di master",l3:"Head of State Helicopter VIP Unit in the Middle East",
         qr_hint:"Inquadra con la fotocamera per avere il mio contatto",qr_dl:"Scarica",close:"Chiudi",copied:"Link copiato",wa:"Buongiorno Salvatore, "},
-      en:{hook:"Supporting Civil, Government, VIP & Defence Aviation",role:"Head of Middle East Operations Services",org:"Leonardo Helicopters · Doha, Qatar",
+      en:{cancel:"Cancel",wa_q:"WhatsApp Qatar",wa_i:"WhatsApp Italy",hook:"Supporting Civil, Government, VIP & Defence Aviation",role:"Head of Middle East Operations Services",org:"Leonardo Helicopters · Doha, Qatar",
         save:"Save contact",call:"Call",qr:"Show QR",share:"Share",
         h_about:"About",
         about1:"I lead Leonardo Helicopters' operations services across the Middle East: sensitive government programmes, multimillion-euro budgets and international teams, with a particular focus on VIP and Head of State aviation.",
@@ -314,7 +361,7 @@
         h_contacts:"Contacts",c1:"Mobile, Qatar",c2:"Mobile, Italy",c3:"Work email",c4:"Personal email",
         h_links:"Links",l1:"Full profile",l2:"Customer support, services & training",l3a:"Master's dissertation",l3:"Head of State Helicopter VIP Unit in the Middle East",
         qr_hint:"Scan with your camera to get my card",qr_dl:"Download",close:"Close",copied:"Link copied",wa:"Hello Salvatore, "},
-      ar:{hook:"دعم الطيران المدني والحكومي وطيران كبار الشخصيات والطيران الدفاعي",role:"رئيس خدمات العمليات في الشرق الأوسط",org:"ليوناردو هليكوبترز · الدوحة، قطر",
+      ar:{cancel:"إلغاء",wa_q:"واتساب قطر",wa_i:"واتساب إيطاليا",hook:"دعم الطيران المدني والحكومي وطيران كبار الشخصيات والطيران الدفاعي",role:"رئيس خدمات العمليات في الشرق الأوسط",org:"ليوناردو هليكوبترز · الدوحة، قطر",
         save:"حفظ جهة الاتصال",call:"اتصال",qr:"عرض رمز QR",share:"مشاركة",
         h_about:"نبذة",
         about1:"أقود خدمات العمليات لدى ليوناردو هليكوبترز في الشرق الأوسط: برامج حكومية حساسة، وميزانيات بملايين اليوروهات، وفرق دولية، مع تركيز خاص على طيران كبار الشخصيات ورؤساء الدول.",
@@ -331,7 +378,6 @@
       document.documentElement.lang=l; document.documentElement.dir=(l==="ar")?"rtl":"ltr";
       document.querySelectorAll("[data-i18n]").forEach(function(el){var k=el.getAttribute("data-i18n"); if(d[k]!=null) el.textContent=d[k];});
       document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed", b.getAttribute("data-set")===l ? "true":"false");});
-      document.querySelectorAll(".wa-link").forEach(function(a){a.href="https://wa.me/97450553691?text="+encodeURIComponent(d.wa);});
       try{localStorage.setItem("lang",l);}catch(e){}
     }
     document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){setLang(b.getAttribute("data-set"));});});
@@ -348,13 +394,33 @@
       if(navigator.clipboard){navigator.clipboard.writeText(data.url).then(function(){say(T[cur].copied);});}
     });
 
+
+    // Choice sheet: Qatar / Italy, work / personal
+    var ICON={call:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>',
+      wa:'<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg>',
+      mail:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>'};
+    function opts(kind){var d=T[cur],w=encodeURIComponent(d.wa);
+      if(kind==="call")return {t:d.call,o:[[d.c1,"+974 5055 3691","tel:+97450553691"],[d.c2,"+39 345 477 0625","tel:+393454770625"]]};
+      if(kind==="wa")return {t:"WhatsApp",o:[[d.wa_q,"+974 5055 3691","https://wa.me/97450553691?text="+w],[d.wa_i,"+39 345 477 0625","https://wa.me/393454770625?text="+w]]};
+      return {t:"Email",o:[[d.c3,"salvatore.caporale@leonardo.com","mailto:salvatore.caporale@leonardo.com"],[d.c4,"salvatore@caporale.pro","mailto:salvatore@caporale.pro"]]};}
+    var sheet=document.getElementById("sheet"),box=document.getElementById("sheet-opts");
+    function openSheet(kind){var x=opts(kind);document.getElementById("sheet-t").textContent=x.t;box.innerHTML="";
+      x.o.forEach(function(o){var a=document.createElement("a");a.className="opt";a.href=o[2];if(kind==="wa"){a.target="_blank";a.rel="noopener";}
+        a.innerHTML='<span class="ic">'+ICON[kind]+'</span><span><small></small><b></b></span>';a.querySelector("small").textContent=o[0];a.querySelector("b").textContent=o[1];
+        a.addEventListener("click",function(){setTimeout(closeSheet,300);});box.appendChild(a);});
+      sheet.classList.add("on");}
+    function closeSheet(){sheet.classList.remove("on");}
+    document.querySelectorAll("[data-sheet]").forEach(function(el){el.addEventListener("click",function(e){e.preventDefault();openSheet(el.getAttribute("data-sheet"));});});
+    document.getElementById("sheet-x").addEventListener("click",closeSheet);
+    sheet.addEventListener("click",function(e){if(e.target===sheet)closeSheet();});
+
     var qr=document.getElementById("qr");
     function openQR(){qr.classList.add("on");document.getElementById("qr-close").focus();}
     function closeQR(){qr.classList.remove("on");}
     document.getElementById("qr-open").addEventListener("click",openQR);
     document.getElementById("qr-close").addEventListener("click",closeQR);
     qr.addEventListener("click",function(e){if(e.target===qr)closeQR();});
-    document.addEventListener("keydown",function(e){if(e.key==="Escape")closeQR();});
+    document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeQR();closeSheet();}});
 
     var bar=document.getElementById("bar"), save=document.getElementById("save");
     if("IntersectionObserver" in window){
